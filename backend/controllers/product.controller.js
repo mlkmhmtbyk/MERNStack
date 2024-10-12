@@ -12,6 +12,7 @@ export const getProducts = async (req, res) => {
 
 export const createProduct = async (req, res) => {
   const product = req.body; // user will send this data
+  console.log(req);
 
   if (!product.name && !product.image && !product.price) {
     return res
@@ -19,6 +20,7 @@ export const createProduct = async (req, res) => {
       .json({ success: false, message: "All fields are required" });
   }
   const newProduct = new Product(product);
+  console.log("new product olusturuldu: " + newProduct);
 
   try {
     await newProduct.save();
