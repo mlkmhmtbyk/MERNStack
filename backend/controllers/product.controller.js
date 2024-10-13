@@ -24,7 +24,7 @@ export const createProduct = async (req, res) => {
 
   try {
     await newProduct.save();
-    res.status(201).json({ success: true, data: newProduct });
+    res.status(200).json({ success: true, data: newProduct });
   } catch (error) {
     console.log("Error in create product: " + error);
     res.status(500).json({ success: false, message: "Server error" });
@@ -43,7 +43,7 @@ export const updateProduct = async (req, res) => {
     const updatedProduct = await Product.findByIdAndUpdate(id, product, {
       new: true,
     });
-    res.status(200).json({ status: "success", data: updatedProduct });
+    res.status(200).json({ success: true, data: updatedProduct });
   } catch (error) {
     res.status(500).json({ success: false, message: "Server error" });
   }
